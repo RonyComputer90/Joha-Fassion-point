@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joha Fashion Point</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            'scroll-left': {
+              '0%': { transform: 'translateX(0)' },
+              '100%': { transform: 'translateX(-100%)' },
+            },
+          },
+          animation: {
+            'scroll-left': 'scroll-left 30s linear infinite',
+          },
+        },
+      },
+    }
+  </script>
+
+  <script>
+    // Prevent Flash of Unstyled Content (FOUC) for dark theme
+    if (
+      localStorage.getItem('theme') === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://aistudiocdn.com/react@^19.1.1",
+      "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+      "react/": "https://aistudiocdn.com/react@^19.1.1/",
+      "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.1",
+      "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.12",
+      "resend": "https://aistudiocdn.com/resend@^4.0.0",
+      "react-dom/server": "https://aistudiocdn.com/react-dom@^19.1.1/server.browser.js"
+    }
+  }
+  </script>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-white dark:bg-gray-900">
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
